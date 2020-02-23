@@ -1,0 +1,864 @@
+[gd_scene load_steps=41 format=2]
+
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://goku/Goku east/ge1.png" type="Texture" id=2]
+[ext_resource path="res://goku/Goku east/ge2.png" type="Texture" id=3]
+[ext_resource path="res://goku/Goku east/ge3.png" type="Texture" id=4]
+[ext_resource path="res://goku/Goku east/ge4.png" type="Texture" id=5]
+[ext_resource path="res://goku/Goku east/ge5.png" type="Texture" id=6]
+[ext_resource path="res://goku/Goku east/ge6.png" type="Texture" id=7]
+[ext_resource path="res://goku/Goku east/ge7.png" type="Texture" id=8]
+[ext_resource path="res://goku/Goku north/1.png" type="Texture" id=9]
+[ext_resource path="res://goku/Goku north/2.png" type="Texture" id=10]
+[ext_resource path="res://goku/Goku north/3.png" type="Texture" id=11]
+[ext_resource path="res://goku/Goku north/4.png" type="Texture" id=12]
+[ext_resource path="res://goku/Goku north/5.png" type="Texture" id=13]
+[ext_resource path="res://goku/Goku north/6.png" type="Texture" id=14]
+[ext_resource path="res://goku/Goku north/7.png" type="Texture" id=15]
+[ext_resource path="res://goku/Goku west/gw1.png" type="Texture" id=16]
+[ext_resource path="res://goku/Goku west/gw2.png" type="Texture" id=17]
+[ext_resource path="res://goku/Goku west/gw3.png" type="Texture" id=18]
+[ext_resource path="res://goku/Goku west/gw4.png" type="Texture" id=19]
+[ext_resource path="res://goku/Goku west/gw5.png" type="Texture" id=20]
+[ext_resource path="res://goku/Goku west/gw6.png" type="Texture" id=21]
+[ext_resource path="res://goku/Goku west/gw7.png" type="Texture" id=22]
+[ext_resource path="res://goku/Goku south/gn1.png" type="Texture" id=23]
+[ext_resource path="res://goku/Goku south/gn2.png" type="Texture" id=24]
+[ext_resource path="res://goku/Goku south/gn3.png" type="Texture" id=25]
+[ext_resource path="res://goku/Goku south/gn4.png" type="Texture" id=26]
+[ext_resource path="res://goku/Goku south/gn5.png" type="Texture" id=27]
+[ext_resource path="res://goku/Goku south/gn6.png" type="Texture" id=28]
+[ext_resource path="res://attacks/beam1.png" type="Texture" id=29]
+[ext_resource path="res://attacks/beam2.png" type="Texture" id=30]
+[ext_resource path="res://attacks/beam3.png" type="Texture" id=31]
+[ext_resource path="res://Coll.gd" type="Script" id=32]
+[ext_resource path="res://Control.tscn" type="PackedScene" id=33]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "East",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "North",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "West",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "South",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Beam"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Beam Collision/South:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("beam1s:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("beam2s:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("beam3s:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("beam4s:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("beamh1s:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Beam Collision/South2:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 2.79397e-007, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Beam Collision/South3:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 2.79397e-007, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Beam Collision/South4:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 2.79397e-007, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Beam Collision/South5:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 2.79397e-007, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Beam East"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Beam_Animation:playback_process_mode")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 2.79397e-007 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Beam Collision/East:shape")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Beam Collision/East:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 45.0052, 19.849 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Beam Collision/East:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("beam1e:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("beam2e:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("beam3e:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("beam4e:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("beamh1e:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Beam Collision/East2:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Beam Collision/East3:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Beam Collision/East4:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 2.79397e-007, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Beam Collision/East5:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Beam North"
+tracks/0/type = "value"
+tracks/0/path = NodePath("beamh1n:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ null, ExtResource( 31 ), null ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Beam Collision/North:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.99672 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("beam1n:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("beam2n:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("beam3n:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("beam4n:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("beamh1n:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Beam Collision/North2:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Beam Collision/North3:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Beam Collision/North4:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Beam Collision/North5:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Beam Collision/West:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.984025 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("beam1w:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("beam2w:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("beam3w:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("beam4w:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("beamh1w:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Beam Collision/West2:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Beam Collision/West3:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Beam Collision/West4:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Beam Collision/West5:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 16.4569, 18.1023 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 10, 22.8341 )
+
+[node name="Player" type="KinematicBody2D"]
+editor/display_folded = true
+position = Vector2( 205.424, 126.459 )
+collision_mask = 2
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 20, 20 )
+frames = SubResource( 1 )
+animation = "South"
+
+[node name="beam1s" type="Sprite" parent="."]
+visible = false
+position = Vector2( 20.8476, 50.5577 )
+texture = ExtResource( 29 )
+
+[node name="beam1n" type="Sprite" parent="."]
+visible = false
+position = Vector2( 17.0754, -7.6216 )
+rotation = -3.14159
+texture = ExtResource( 29 )
+
+[node name="beam1e" type="Sprite" parent="."]
+visible = false
+position = Vector2( 44.6234, 19.7068 )
+rotation = -1.5708
+texture = ExtResource( 29 )
+
+[node name="beam1w" type="Sprite" parent="."]
+visible = false
+position = Vector2( -6.42731, 24.3061 )
+rotation = 1.5708
+texture = ExtResource( 29 )
+
+[node name="beam2n" type="Sprite" parent="."]
+visible = false
+position = Vector2( 17.0746, -39.6517 )
+rotation = 3.14159
+texture = ExtResource( 30 )
+
+[node name="beam2s" type="Sprite" parent="."]
+visible = false
+position = Vector2( 20.8476, 78.409 )
+texture = ExtResource( 30 )
+
+[node name="beam2e" type="Sprite" parent="."]
+visible = false
+position = Vector2( 73.2623, 19.7068 )
+rotation = -1.5708
+texture = ExtResource( 30 )
+
+[node name="beam2w" type="Sprite" parent="."]
+visible = false
+position = Vector2( -39.527, 24.306 )
+rotation = 1.5708
+texture = ExtResource( 30 )
+
+[node name="beam3n" type="Sprite" parent="."]
+visible = false
+position = Vector2( 17.075, -70.983 )
+rotation = 3.14159
+texture = ExtResource( 30 )
+
+[node name="beam3s" type="Sprite" parent="."]
+visible = false
+position = Vector2( 20.8476, 108.462 )
+texture = ExtResource( 30 )
+
+[node name="beam3e" type="Sprite" parent="."]
+visible = false
+position = Vector2( 104.603, 19.7068 )
+rotation = -1.5708
+texture = ExtResource( 30 )
+
+[node name="beam3w" type="Sprite" parent="."]
+visible = false
+position = Vector2( -71.454, 24.306 )
+rotation = 1.5708
+texture = ExtResource( 30 )
+
+[node name="beam4n" type="Sprite" parent="."]
+visible = false
+position = Vector2( 17.075, -102.996 )
+rotation = 3.14159
+texture = ExtResource( 30 )
+
+[node name="beam4s" type="Sprite" parent="."]
+visible = false
+position = Vector2( 20.8476, 140.45 )
+texture = ExtResource( 30 )
+
+[node name="beam4e" type="Sprite" parent="."]
+visible = false
+position = Vector2( 135.944, 19.7068 )
+rotation = -1.5708
+texture = ExtResource( 30 )
+
+[node name="beam4w" type="Sprite" parent="."]
+visible = false
+position = Vector2( -102.749, 24.306 )
+rotation = 1.5708
+texture = ExtResource( 30 )
+
+[node name="beamh1n" type="Sprite" parent="."]
+visible = false
+position = Vector2( 17.075, -135.125 )
+rotation = 3.14159
+
+[node name="beamh1s" type="Sprite" parent="."]
+visible = false
+position = Vector2( 20.848, 172.139 )
+texture = ExtResource( 31 )
+
+[node name="beamh1e" type="Sprite" parent="."]
+visible = false
+position = Vector2( 168.129, 19.7068 )
+rotation = -1.5708
+texture = ExtResource( 31 )
+
+[node name="beamh1w" type="Sprite" parent="."]
+visible = false
+position = Vector2( -134.277, 24.306 )
+rotation = 1.5708
+texture = ExtResource( 31 )
+
+[node name="Beam_Animation" type="AnimationPlayer" parent="."]
+playback_process_mode = 0
+anims/Beam = SubResource( 2 )
+"anims/Beam East" = SubResource( 3 )
+"anims/Beam North" = SubResource( 4 )
+"anims/Beam West" = SubResource( 5 )
+
+[node name="Beam Collision" type="RigidBody2D" parent="."]
+editor/display_folded = true
+visible = false
+collision_layer = 2
+collision_mask = 2
+mode = 3
+can_sleep = false
+
+[node name="East" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( 45.0052, 19.849 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="East2" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( 77.8989, 19.849 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="East3" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( 110.793, 19.849 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="East4" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( 143.686, 19.849 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="East5" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( 176.58, 19.849 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="South" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( 19.7637, 52.928 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="South2" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( 19.7637, 89.2415 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="South3" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( 19.7637, 125.555 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="South4" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( 19.7637, 161.011 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="South5" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( 18.683, 170.197 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="West" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( -6.40709, 22.5333 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="West2" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( -38.6258, 22.5333 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="West3" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( -71.4477, 22.5333 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="West4" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( -104.27, 22.5333 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="West5" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( -136.868, 22.5333 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="North" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( 17.4931, -7.31799 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="North2" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( 17.4931, -43.6315 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="North3" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( 17.4931, -79.9451 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="North4" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( 17.4931, -115.401 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="North5" type="CollisionShape2D" parent="Beam Collision"]
+position = Vector2( 16.9527, -135.504 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 19.4308, 13.8464 )
+polygon = PoolVector2Array( -5.04122, 19.7232, -5.16973, 14.5827, -7.73997, 14.9683, -9.2821, 12.6551, -7.35443, 5.71542, -7.0974, 3.14519, -8.89657, 1.60305, -6.71187, -0.710163, -9.2821, -1.48123, -8.76806, -10.0915, 2.66949, -9.8345, 7.03888, 0.317932, 7.03888, 13.5546, 4.08311, 15.0968, 3.95461, 21.2653, -5.29824, 21.3938 )
+
+[node name="Coll" type="Area2D" parent="."]
+script = ExtResource( 32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coll"]
+position = Vector2( 19.3635, 19.6709 )
+shape = SubResource( 7 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 305.011, 176.133 )
+
+[node name="VBoxContainer" parent="Camera2D" instance=ExtResource( 33 )]
+margin_left = -510.063
+margin_top = 100.055
+margin_right = -410.062
+margin_bottom = 300.055
+[connection signal="area_entered" from="Coll" to="Coll" method="_on_Coll_area_entered"]
